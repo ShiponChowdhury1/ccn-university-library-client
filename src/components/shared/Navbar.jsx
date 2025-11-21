@@ -63,25 +63,31 @@ const Navbar = () => {
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold transition"
+              className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
             >
               Logout
             </button>
           ) : (
             <Link
               to="/login"
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-bold transition"
+              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
             >
               Login
             </Link>
           )}
 
-          <button onClick={toggleTheme} className="p-2 rounded-full">
-            {darkMode ? <Sun /> : <Moon />}
+          <button 
+            onClick={toggleTheme} 
+            className="p-2.5 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 dark:from-indigo-500 dark:to-purple-600 hover:from-yellow-500 hover:to-orange-600 dark:hover:from-indigo-600 dark:hover:to-purple-700 shadow-md hover:shadow-lg transform hover:scale-110 transition-all duration-200"
+          >
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
           {/* Mobile menu toggle */}
-          <button onClick={toggleMenu} className="md:hidden">
+          <button 
+            onClick={toggleMenu} 
+            className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+          >
             {menuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -90,29 +96,38 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className={`flex flex-col gap-4 p-4 ${darkMode ? "bg-gray-800" : "bg-blue-600"} md:hidden`}>
-          <Link to="/" onClick={toggleMenu}>Home</Link>
-          <Link to="/books" onClick={toggleMenu}>Books</Link>
+          <Link to="/" onClick={toggleMenu} className="hover:text-yellow-300 transition">Home</Link>
+          <Link to="/books" onClick={toggleMenu} className="hover:text-yellow-300 transition">Books</Link>
 
           {user?.role === "student" && (
-            <Link to="/add-books" onClick={toggleMenu}>Books Post</Link>
+            <Link to="/add-books" onClick={toggleMenu} className="hover:text-yellow-300 transition">Books Post</Link>
           )}
 
           {user?.role === "admin" && (
             <>
-              <Link to="/dashboard" onClick={toggleMenu}>Dashboard</Link>
-              <Link to="/add-books" onClick={toggleMenu}>Books Post</Link>
+              <Link to="/dashboard" onClick={toggleMenu} className="hover:text-yellow-300 transition">Dashboard</Link>
+              <Link to="/add-books" onClick={toggleMenu} className="hover:text-yellow-300 transition">Books Post</Link>
             </>
           )}
 
-          <Link to="/about" onClick={toggleMenu}>About</Link>
-          <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+          <Link to="/about" onClick={toggleMenu} className="hover:text-yellow-300 transition">About</Link>
+          <Link to="/contact" onClick={toggleMenu} className="hover:text-yellow-300 transition">Contact</Link>
 
           {isLoggedIn ? (
-            <button onClick={() => { handleLogout(); toggleMenu(); }}>
+            <button 
+              onClick={() => { handleLogout(); toggleMenu(); }}
+              className="bg-gradient-to-r from-red-500 to-pink-600 text-white px-4 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
+            >
               Logout
             </button>
           ) : (
-            <Link to="/login" onClick={toggleMenu}>Login</Link>
+            <Link 
+              to="/login" 
+              onClick={toggleMenu}
+              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all text-center"
+            >
+              Login
+            </Link>
           )}
         </div>
       )}
