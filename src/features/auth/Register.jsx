@@ -8,8 +8,6 @@ const Register = () => {
     setEmail,
     password,
     setPassword,
-    role,
-    setRole,
     loading,
     error,
     success,
@@ -45,23 +43,7 @@ const Register = () => {
           className="p-3 border rounded w-full"
         />
         <div>
-          <label className="mr-2">Role:</label>
-          <input
-            type="radio"
-            name="role"
-            value="student"
-            checked={role === "student"}
-            onChange={(e) => setRole(e.target.value)}
-          />
-          Student
-          <input
-            type="radio"
-            name="role"
-            value="admin"
-            checked={role === "admin"}
-            onChange={(e) => setRole(e.target.value)}
-          />
-          Admin
+        
         </div>
         <button
           disabled={loading}
