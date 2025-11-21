@@ -9,7 +9,7 @@ export default function BookSearch() {
 
   // প্রথমে সব বই লোড করব (page load এ)
   useEffect(() => {
-    fetch("http://localhost:5000/api/books")
+    fetch("https://ccn-library-mangemenet-backend.vercel.app/api/books")
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setAllBooks(data);
@@ -26,7 +26,7 @@ export default function BookSearch() {
 
     const delayDebounceFn = setTimeout(() => {
       setLoading(true);
-      fetch(`http://localhost:5000/api/books/search?q=${encodeURIComponent(searchTerm)}`)
+      fetch(`https://ccn-library-mangemenet-backend.vercel.app/api/books/search?q=${encodeURIComponent(searchTerm)}`)
         .then(res => res.json())
         .then(data => {
           if (Array.isArray(data)) {

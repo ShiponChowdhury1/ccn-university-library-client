@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Use environment variable for API URL
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL || "https://ccn-library-mangemenet-backend.vercel.app";
 
 // API calls
 export const loginUser = async ({ email, password }) => {

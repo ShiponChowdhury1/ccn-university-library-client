@@ -9,7 +9,7 @@ const BookDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/api/books/${id}`)
+    fetch(`https://ccn-library-mangemenet-backend.vercel.app/api/books/${id}`)
       .then(res => {
         if (!res.ok) {
           throw new Error("Failed to fetch book");
