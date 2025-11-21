@@ -94,15 +94,20 @@ const BookList = ({ searchQuery, selectedCategories, selectedRating, sortBy }) =
         <Link
           to={`/books/${book._id}`}
           key={book._id}
-          className="rounded-2xl shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl border-2 border-green-200 dark:border-green-700 bg-white dark:bg-gray-800"
+          className="group relative rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white dark:bg-gray-800 border-2 border-transparent hover:border-transparent"
+          style={{
+            background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%) border-box',
+          }}
         >
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl"></div>
+          
           <img
             src={book.imageUrl || "https://via.placeholder.com/300x200?text=No+Image"}
             alt={book.title}
-            className="w-full h-48 object-cover"
+            className="w-full h-48 object-cover relative z-10"
           />
-          <div className="p-4">
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 truncate">{book.title}</h2>
+          <div className="p-4 relative z-10 dark:bg-gray-800">
+            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 truncate group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{book.title}</h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm">by {book.author}</p>
             {book.department && (
               <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold mt-1">📚 {book.department}</p>
