@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { fetchBooksApi } from "../../api/booksApi";
 import { Link } from "react-router-dom";
+import LoaderSpinner from "../pages/LoaderSpinner";
 
 const BookList = ({ searchQuery, selectedCategories, selectedRating, sortBy }) => {
   const [books, setBooks] = useState([]);
@@ -66,7 +67,7 @@ const BookList = ({ searchQuery, selectedCategories, selectedRating, sortBy }) =
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="text-xl font-semibold text-gray-600 dark:text-gray-400">Loading books...</div>
+         <LoaderSpinner />
       </div>
     );
   }

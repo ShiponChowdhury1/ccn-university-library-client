@@ -5,6 +5,8 @@ import axios from "axios";
 import { useBookForm } from "../hooks/useAddBook";
 import CustomButton from "./CustomButton";
 
+const API_URL = import.meta.env.VITE_API_URL || "https://ccn-library-mangemenet-backend.vercel.app";
+
 const BookAddForm = () => {
   const {
     title, setTitle,
@@ -36,7 +38,7 @@ const BookAddForm = () => {
   };
 
   try {
-    const response = await axios.post("https://ccn-library-mangemenet-backend.vercel.app/api/books", bookData);
+    const response = await axios.post(`${API_URL}/api/books`, bookData);
     alert("Book added successfully!");
 
 
