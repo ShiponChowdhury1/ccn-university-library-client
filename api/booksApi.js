@@ -25,6 +25,3 @@ export const deleteBookApi = async (id) => {
   });
 };
 
-
-//https://ccn-university-library-server-production.up.railway.app
-//http://localhost:5000
