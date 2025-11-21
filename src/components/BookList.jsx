@@ -89,37 +89,37 @@ const BookList = ({ searchQuery, selectedCategories, selectedRating, sortBy }) =
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 p-2 sm:p-4">
       {sortedBooks.map((book) => (
         <Link
           to={`/books/${book._id}`}
           key={book._id}
-          className="group relative rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white dark:bg-gray-800 border-2 border-transparent hover:border-transparent"
+          className="group relative rounded-xl sm:rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white dark:bg-gray-800 border-2 border-transparent hover:border-transparent"
           style={{
             background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%) border-box',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-xl sm:rounded-2xl"></div>
           
           <img
             src={book.imageUrl || "https://via.placeholder.com/300x200?text=No+Image"}
             alt={book.title}
-            className="w-full h-48 object-cover relative z-10"
+            className="w-full h-40 sm:h-48 object-cover relative z-10"
           />
-          <div className="p-4 relative z-10 dark:bg-gray-800">
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 truncate group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{book.title}</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">by {book.author}</p>
+          <div className="p-3 sm:p-4 relative z-10 dark:bg-gray-800">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 truncate group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{book.title}</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm truncate">by {book.author}</p>
             {book.department && (
               <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold mt-1">📚 {book.department}</p>
             )}
             {book.category && (
-              <p className="text-xs text-green-600 dark:text-green-400 mt-1">{book.category}</p>
+              <p className="text-xs text-green-600 dark:text-green-400 mt-1 truncate">{book.category}</p>
             )}
-            <div className="mt-2 flex">
+            <div className="mt-2 flex gap-0.5">
               {Array.from({ length: 5 }).map((_, index) => (
                 <span
                   key={index}
-                  className={index < (book.rating || 0) ? "text-yellow-400" : "text-gray-300 dark:text-gray-600"}
+                  className={`text-sm sm:text-base ${index < (book.rating || 0) ? "text-yellow-400" : "text-gray-300 dark:text-gray-600"}`}
                 >
                   ★
                 </span>
